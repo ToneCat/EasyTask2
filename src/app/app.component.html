@@ -1,0 +1,16 @@
+<html>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+<h1 class="mat-display-3">EasyTask</h1>
+
+<div style="margin-top:-60px;">
+  <mat-card>
+
+    <button mat-raised-button routerLink="/tasks" id="viewTasks">View Tasks</button>
+    <button id="newTask" mat-raised-button color="primary" routerLink="/tasks/create">Add Task<mat-icon id="editicon">add</mat-icon></button>
+  </mat-card>
+<router-outlet></router-outlet>
+</div>
+
+</html>

@@ -1,0 +1,40 @@
+ <mat-card>
+
+<h2 class="mat-h2" id="warning">Task {{id2}} Details</h2>
+
+
+<button mat-raised-button id="edittask" (click)="startUpdate()">Update<mat-icon id="editicon">edit</mat-icon></button>
+<button mat-raised-button id="canceltask" (click)="cancelUpdate()">Cancel<mat-icon id="editicon">cancel</mat-icon></button>
+
+
+<div class="example-container">
+
+ <mat-form-field>
+    <textarea disabled matInput #id placeholder="Task ID" id="idtext" value = "{{id2}}"></textarea>
+  </mat-form-field>
+
+
+ <mat-form-field>
+    <textarea disabled matInput #date1 placeholder="Date" id="datetext" value = "{{date}}"></textarea>
+  </mat-form-field>
+
+
+ <mat-form-field>
+    <textarea disabled matInput #description placeholder="Description" id="desctext" value="{{desc}}"></textarea>
+  </mat-form-field>
+
+   <mat-form-field>
+    <textarea disabled matInput #comp placeholder="Complete?" id="comptext" value="{{complete}}"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea disabled matInput #datecomp1 placeholder="Date Completed" id="datecomptext" value="{{datecomp}}"></textarea>
+  </mat-form-field>
+
+   <button mat-raised-button color="primary" id="submitupdate" style="visibility:hidden;" (click)="nextStepUpdate(id.value, description.value, comp.value)">Update Task</button>
+
+
+</div>
+ </mat-card>
+
+

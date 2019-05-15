@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body{
+background: #7F7FD5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.mat-card{
+	width:auto;
+	max-width:700px;
+	margin-right:auto;
+	margin-left: auto;
+	margin-top:30px;
+}
+
+
+.mat-display-3{
+	text-align: center;
+	color:white;
+	margin-bottom:75px;
+	font-style: italic;
+}
+.mat-h2{
+	margin-top:20px;
+	text-align: center;
+    color:#696969;
+
+}
+button.mat-raised-button{
+
+}
+
+table.mat-table{
+	width:750px;
+	max-width:700px;
+	 -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#edittask{
+
+	margin-top:-50px;
+	float:right;
+
+}
+#canceltask{
+	margin-top:-50px;
+	float:right;
+	visibility: hidden;
+}
+#backto{
+	margin-top:-50px;
+	float:left;
+
+}
+#newTask{
+
+  float:right;
+
+}
+#deletetask{
+	margin-left:20px;
+}
+#taskdetails{
+	margin-left:10px;
+}
+th.mat-header-cell{
+	text-align: left;
+}
+
+
+
