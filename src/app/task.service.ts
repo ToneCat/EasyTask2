@@ -1,48 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 
 @Injectable()
 export class TaskService {
-
+  constructor(private http: HttpClient) {}
 /**
-*creates a new task, adds it to the task JSON object, and pushes it to the local storage.
-* @param {string} id -The task id number.
+*creates a new task using node server and remote mongodb server.
+* @param {string} desc - description (user entered).
 */
 createTask(desc){
+var url = 'http://localhost:3000/api/tasks?description='+desc;
+const body = {description : desc};
 
+  return this.http.post<any>(url, body).subscribe();
 
-var tasks= [{}];
-if(JSON.parse(window.localStorage.getItem("tasks")) == null){ //checks to see if task list is null
-window.localStorage.setItem("tasks", JSON.stringify(tasks));	
-}
-else {
-	tasks = JSON.parse(window.localStorage.getItem("tasks"));
-}
-
-
-let isComplete: boolean = false; 
-var id=(tasks.length-1)+1;
-
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth() + 1;
-
-var yyyy = today.getFullYear(); 
-if (dd < 10) {
-  dd = 0 + dd;
-} 
-if (mm < 10) {
-  mm = 0 + mm;
-} 
-var hello = mm + '/' + dd + '/' + yyyy; //current date
-
-//sets entry
-var entry = {"id": id, "dateCreated": hello, "description":desc, "isComplete": isComplete, "dateCompleted": "not completed"} 
-// pushes entry
-tasks.push(entry); 
-var storedTaskList = window.localStorage.setItem("tasks", JSON.stringify(tasks));
-window.location.href = "https://tonecat.github.io/easytask/tasks";
 
 }
 

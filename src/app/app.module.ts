@@ -13,6 +13,7 @@ import { CreateTaskComponent } from './createtask.component';
 import { TaskDetailsComponent } from './taskdetails.component';
 import { TaskService } from './task.service';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

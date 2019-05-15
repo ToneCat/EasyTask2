@@ -2,14 +2,19 @@ const express = require('express')
 const app = express()
 var port =  3000;
 const mongo = require('mongodb').MongoClient
+var cors = require('cors')
+
+
+app.use(cors())
 
 
 const url = 'mongodb+srv://484:tony@cluster0-ztofz.mongodb.net/test?retryWrites=true' //MongoDB remote string
  
 
 
-app.post('/api/tasks', function(req, res) { //post function to post new task into db
+app.post('/api/tasks/', function(req, res) { //post function to post new task into db
 var desc = req.query.description
+console.log(desc)
 
 var isComplete = false //set isComplete to false automatically
 
