@@ -40,39 +40,10 @@ window.location.href = "https://tonecat.github.io/easytask/tasks";
 *@param {boolean} comp  - task complete boolean value.
 */
 updateTask(id, desc, comp){
-var tasksforUpdate = JSON.parse(window.localStorage.getItem("tasks"));
-
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth() + 1;
-
-var yyyy = today.getFullYear();
-if (dd < 10) {
-  dd = 0 + dd;
-} 
-if (mm < 10) {
-  mm = 0 + mm;
-} 
-var hello = mm + '/' + dd + '/' + yyyy;
-
-
-
-
-for (var i = 1; i < tasksforUpdate.length; i++) {
-  if (tasksforUpdate[i].id == id) {
-    tasksforUpdate[i].description = desc;
-     tasksforUpdate[i].isComplete = comp;
-     if(tasksforUpdate[i].isComplete == 'true'){
-     tasksforUpdate[i].dateCompleted = hello;
-	} 
-	else{
-	tasksforUpdate[i].dateCompleted = "not completed";
-
-	}
-  }
-}
-	window.localStorage.setItem("tasks", JSON.stringify(tasksforUpdate));	
-	window.location.reload();
+  var url = 'http://localhost:3000/api/tasks/'+id+'?description='+desc+'&isComplete='+comp;
+  const body = {description : desc};
+  
+    return this.http.patch<any>(url, body).subscribe();
 
 }
 /**

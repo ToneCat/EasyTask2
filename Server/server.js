@@ -14,7 +14,7 @@ const url = 'mongodb+srv://484:tony@cluster0-ztofz.mongodb.net/test?retryWrites=
 
 app.post('/api/tasks/', function(req, res) { //post function to post new task into db
 var desc = req.query.description
-console.log(desc)
+
 
 var isComplete = false //set isComplete to false automatically
 
@@ -167,7 +167,7 @@ const collection = db.collection('tasks')
 var query = { _id : id } // sets ID for query to find which task to update
 
 if (desc && !comp){ // description exists and no isComplete parameter...
-  data = { $set: {  description : desc }} // sets update body
+  data = { $set: {  description : desc, isComplete:comp }} // sets update body
 }
 else if (!desc && comp){ // isComplete parameter and no description
   data = { $set: {  isComplete : comp }} // sets update body
