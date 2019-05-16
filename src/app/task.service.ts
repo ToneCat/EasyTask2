@@ -12,9 +12,9 @@ export class TaskService {
 */
 createTask(desc){
 var url = 'http://localhost:3000/api/tasks?description='+desc;
-const body = {description : desc};
+const body2 = {description : desc};
 
-  return this.http.post<any>(url, body).subscribe();
+  return this.http.post<any>(url, body2).subscribe();
 
 
 }

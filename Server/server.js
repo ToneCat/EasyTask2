@@ -37,12 +37,13 @@ var numberofDocs =0;
 
 collection.countDocuments().then((count) => { // counts documents in current collection and returns it, for incremented id
     numberofDocs = count+1; //increments ID
+    console.log(numberofDocs)
 
 }).then((response) => collection.insertMany( //async ".then" so it gets document count before insertion
     [{_id: numberofDocs, // <- this is the document count, which will made the task ID
      description: desc, 
      isComplete: isComplete, 
-     dateCreated: new Date(Date.now()).toISOString(),
+     dateCreated: (new Date(Date.now()).toISOString()).split('T')[0],
      dateCompleted: 'in progress'}], (err, result) => {
       var location = 'http://0.0.0.0:3000/:'+numberofDocs; // sets header location
       res.setHeader('Location', location); // response header url
