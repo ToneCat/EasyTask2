@@ -39,6 +39,14 @@ dataSource;
   .toPromise()
   .then((response) => {
     this.dataSource = response;
+    if(this.dataSource === undefined || this.dataSource.length === 0){
+  
+      x.style.visibility = "visible";
+      }
+      else{
+       x.remove();
+    
+      }
 
   })
   .catch((error) => {
@@ -46,21 +54,14 @@ dataSource;
   });
 
 
-  if(this.dataSource === undefined || this.dataSource.length == 0){
-  
-  x.style.visibility = "visible";
-  }
-  else{
-   x.remove();
 
-  }
   }
   selectRow(row){
 	console.log(row);
 }
 
 /**
-*starts deletion process and passes ID into taskService instance by calling deleteTask(id)
+* deletion process and passes ID into taskService instance by calling deleteTask(id)
 * @param {string} id -The task id number.
 */
 startDelete(id){

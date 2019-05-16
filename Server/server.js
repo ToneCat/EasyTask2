@@ -5,7 +5,7 @@ const mongo = require('mongodb').MongoClient
 var cors = require('cors')
 
 
-app.use(cors())
+app.use(cors()) //bypass cors
 
 
 const url = 'mongodb+srv://484:tony@cluster0-ztofz.mongodb.net/test?retryWrites=true' //MongoDB remote string
@@ -199,6 +199,26 @@ else{ // if no ID, or ID isnt valid
 }
 
 })
+app.delete('/api/delete/', function(req, res) {
+  var id = parseInt(req.query.id)
+  console.log(id)
+  mongo.connect(url, { useNewUrlParser: true }, (err, client) => {
+    const db = client.db('homework')
+    const collection = db.collection('tasks')
+    
+    console.log("hey")
+    
+    
+    collection.deleteOne({_id: id });
+
+    
+      if (err) {
+        console.error(err)
+        return
+      }
+    }) 
+
+  })
 
     
 app.listen(port, () => console.log(`listening on port ${port}!`)) //listener

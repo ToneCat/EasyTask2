@@ -13,22 +13,22 @@ export class TaskService {
 createTask(desc){
 var url = 'http://localhost:3000/api/tasks?description='+desc;
 const body2 = {description : desc};
-
+window.location.href = "http://localhost:4200/tasks";
   return this.http.post<any>(url, body2).subscribe();
 
 
 }
 
 /**
-*takes a task by ID number, deletes it from the JSON, and then updates local storage
+*takes a task by ID number, deletes it from the database
 * @param {string} id -The task id number.
 */
 deleteTask(id){
-var tasksforDelete = JSON.parse(window.localStorage.getItem("tasks"));
-var idForDeletion = id;
-tasksforDelete = tasksforDelete.filter(item=>item.id !=idForDeletion );
-window.localStorage.setItem("tasks", JSON.stringify(tasksforDelete));
-window.location.href = "https://tonecat.github.io/easytask/tasks";
+var url = 'http://localhost:3000/api/delete?id='+id;
+window.location.href = "http://localhost:4200/tasks";
+return this.http.delete<any>(url).subscribe();
+
+
 
 }
 
