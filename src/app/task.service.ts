@@ -60,8 +60,11 @@ getTaskById(idtwo){
 *returns a json of all tasks
 */
 getAllTasks(){
-var getTasks = JSON.parse(window.localStorage.getItem("tasks"));
-return getTasks;
+ var tasks = this.http.get('http://localhost:3000/api/tasks')
+
+
+
+ return tasks;
 	
 }
 

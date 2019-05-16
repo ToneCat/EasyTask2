@@ -108,6 +108,8 @@ mongo.connect(url, { useNewUrlParser: true }, (err, client) => {
 const db = client.db('homework')
 const collection = db.collection('tasks')
 
+console.log("hey")
+
 
 collection.find({}).toArray(function(err, docs) { //finds all documents
             console.log(docs);
@@ -170,7 +172,7 @@ if (desc && !comp){ // description exists and no isComplete parameter...
   data = { $set: {  description : desc, isComplete:comp }} // sets update body
 }
 else if (!desc && comp){ // isComplete parameter and no description
-  data = { $set: {  isComplete : comp }} // sets update body
+  data = { $set: {  description : desc, isComplete:comp }} // sets update body
 }
 else{
   var data = { $set: {  description : desc , isComplete : comp }} // sets update body

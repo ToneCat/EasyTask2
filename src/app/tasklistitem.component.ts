@@ -3,6 +3,7 @@ import { TaskService } from './task.service';
 
 
 
+
 @Component({
   selector: 'tasklistitem',
   templateUrl: './tasklistitem.component.html',
@@ -29,8 +30,22 @@ dataSource;
      
   }
   ngOnInit(){
+
+    
   var x = document.getElementById('warning');
-  this.dataSource = this.task.slice(1); // slices off blank task entry
+  
+
+  this.taskService.getAllTasks()
+  .toPromise()
+  .then((response) => {
+    this.dataSource = response;
+
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+
   if(this.dataSource === undefined || this.dataSource.length == 0){
   
   x.style.visibility = "visible";
