@@ -37,13 +37,28 @@ public title = 'Task Details';
  
 // various HTML manipulations for UI
   ngOnInit(){
+    console.log(this.id)
  this.id = this.route.snapshot.paramMap.get("id");
- var getTask = this.taskService.getTaskById(this.id);
-  this.id2 = getTask[0].id;
-  this.date = getTask[0].dateCreated;
-    this.desc = getTask[0].description;
-    this.complete = getTask[0].isComplete;
-    this.datecomp = getTask[0].dateCompleted;
+
+ this.taskService.getTaskById(this.id)
+ .toPromise()
+ .then((response) => {
+ 
+   this.id2 = response['_id'];
+    this.date = response['dateCreated'];
+    this.desc = response['description'];
+    this.complete = response['isComplete'];
+    this.datecomp =response['dateCompleted'];
+ 
+
+ })
+ .catch((error) => {
+   console.error(error);
+ });
+
+
+
+  
      document.getElementById("newTask").style.visibility = "hidden";	
     document.getElementById("viewTasks").style.visibility = "visible";	
 document.getElementById("viewTasks").innerHTML = 'Go Back';

@@ -45,7 +45,7 @@ collection.countDocuments().then((count) => { // counts documents in current col
      isComplete: isComplete, 
      dateCreated: (new Date(Date.now()).toISOString()).split('T')[0],
      dateCompleted: 'in progress'}], (err, result) => {
-      var location = 'http://0.0.0.0:3000/:'+numberofDocs; // sets header location
+      var location = 'http://localhost:3000/:'+numberofDocs; // sets header location
       res.setHeader('Location', location); // response header url
      res.sendStatus(201); 
      client.close()
@@ -169,15 +169,12 @@ const db = client.db('homework')
 const collection = db.collection('tasks')
 var query = { _id : id } // sets ID for query to find which task to update
 
-if (desc && !comp){ // description exists and no isComplete parameter...
-  data = { $set: {  description : desc, isComplete:comp }} // sets update body
-}
-else if (!desc && comp){ // isComplete parameter and no description
-  data = { $set: {  description : desc, isComplete:comp }} // sets update body
-}
-else{
-  var data = { $set: {  description : desc , isComplete : comp }} // sets update body
-}
+  if (comp === true){
+  var data = { $set: {  description : desc , isComplete : comp, dateCompleted : (new Date(Date.now()).toISOString()).split('T')[0]  }} // sets update body
+  }
+  else {
+    data = { $set: {  description : desc , isComplete : comp, dateCompleted : 'in progress'  }} // sets update body
+  }
 
 collection.updateOne(query , data, (err , docs) => { // carries out the update
     if(err) throw err;

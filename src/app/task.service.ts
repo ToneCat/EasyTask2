@@ -42,7 +42,7 @@ return this.http.delete<any>(url).subscribe();
 updateTask(id, desc, comp){
   var url = 'http://localhost:3000/api/tasks/'+id+'?description='+desc+'&isComplete='+comp;
   const body = {description : desc};
-  
+  window.location.href = "http://localhost:4200/tasks";
     return this.http.patch<any>(url, body).subscribe();
 
 }
@@ -51,9 +51,13 @@ updateTask(id, desc, comp){
 * @param {string} id -The task id number.
 */
 getTaskById(idtwo){
- var response = JSON.parse(window.localStorage.getItem("tasks"));
- const a = response.filter(response => response.id == idtwo);
- return a;
+
+  var tasks = this.http.get('http://localhost:3000/api/tasks/'+idtwo)
+  
+  return tasks;
+
+
+
 }
 
 /**
