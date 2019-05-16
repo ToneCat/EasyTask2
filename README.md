@@ -1,10 +1,9 @@
 # EasyTask - About
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+This project utilizes MongoDB and Node.js to provide a simple and easy to use task management system.
+To use, first start the Node.js server and then the Angular project. To start the Node.js server, navigate to the "Server" folder.
 
-This is a simple Angular task management system using material design. 
 
-Live example can be found at : https://tonecat.github.io/easytask/
 
 ## Development server
 
