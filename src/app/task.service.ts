@@ -33,7 +33,7 @@ return this.http.delete<any>(url).subscribe();
 }
 
 /**
-*updates the task JSON using ID, matches ID, then updates description, isComplete
+*updates the task in database using ID, matches ID, then updates description, isComplete
 * and date of completion using the current date.
 * @param {string} id -The task id number.
 * @param {string} desc -The task description.
@@ -47,7 +47,7 @@ updateTask(id, desc, comp){
 
 }
 /**
-*gets a task by its ID number using filtering
+*gets a task by its ID number
 * @param {string} id -The task id number.
 */
 getTaskById(idtwo){
@@ -61,7 +61,7 @@ getTaskById(idtwo){
 }
 
 /**
-*returns a json of all tasks
+*returns an objects of all tasks
 */
 getAllTasks(){
  var tasks = this.http.get('http://localhost:3000/api/tasks')

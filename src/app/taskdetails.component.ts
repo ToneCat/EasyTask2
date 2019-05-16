@@ -43,7 +43,7 @@ public title = 'Task Details';
  this.taskService.getTaskById(this.id)
  .toPromise()
  .then((response) => {
- 
+ // assigns various task properties to each of the parsed data fields to display the task in "task details" page
    this.id2 = response['_id'];
     this.date = response['dateCreated'];
     this.desc = response['description'];
